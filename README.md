@@ -1,8 +1,8 @@
 # Awesome Space Bunny Alpha [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A curated list of everything about **Space Bunny Alpha** — the stealth, 1,000,000-token-context LLM that appeared on OpenRouter and is being tested across coding agents.
+> A curated list of everything about the **Space Bunny model** — **Space Bunny Alpha**, the stealth, 1,000,000-token-context **LLM** that appeared on OpenRouter and is being tested across coding agents like **opencode**. How to use it **free**, code examples, and integrations.
 
-Space Bunny Alpha is an anonymous ("stealth") large language model available on **OpenRouter** (`stealth/space-bunny-alpha`) since **September 23, 2026**. It has a **1M-token context window**, native multimodal input, adjustable reasoning, strong coding, and is **free during the preview**.
+**Space Bunny Alpha** (the "Space Bunny model", a.k.a. Space Bunny Alpha model) is an anonymous ("stealth") large language model — a fast, coding-focused **LLM** — available on **OpenRouter** (`stealth/space-bunny-alpha`) since **September 23, 2026**. It has a **1M-token context window**, native multimodal input, adjustable reasoning, strong coding, and is **free during the preview**.
 
 **Try it free in your browser (no signup): [spacebunnymodel.com](https://spacebunnymodel.com)** — an independent playground + OpenAI-compatible API for the model.
 
@@ -13,6 +13,8 @@ Space Bunny Alpha is an anonymous ("stealth") large language model available on 
 - [At a glance](#at-a-glance)
 - [Try it in 30 seconds](#try-it-in-30-seconds)
 - [Ways to access it](#ways-to-access-it)
+- [Space Bunny Alpha in opencode](#space-bunny-alpha-in-opencode)
+- [Is Space Bunny free?](#is-space-bunny-free)
 - [Code examples](#code-examples)
 - [Use it in your tools](#use-it-in-your-tools)
 - [Give your agent a 1M-token tool](#give-your-agent-a-1m-token-tool)
@@ -51,6 +53,46 @@ curl https://spacebunnymodel.com/api/v1/chat/completions \
 - 🔑 **Hosted OpenAI-compatible API** — <https://spacebunnymodel.com/get-jev> (one `sb_live_` key, no OpenRouter account, stable model name)
 - 🌐 **OpenRouter directly** — model `stealth/space-bunny-alpha` (needs an OpenRouter account; free in preview)
 - 🧩 **In your coding agent** — see [Use it in your tools](#use-it-in-your-tools)
+
+## Space Bunny Alpha in opencode
+
+`space bunny opencode` is the most-searched way to use this model — [opencode](https://opencode.ai) is the open-source coding agent everyone's pairing with Space Bunny's free 1M context. Two setups:
+
+**Via OpenRouter** (quickest):
+
+```bash
+opencode auth login          # choose OpenRouter, paste your key
+opencode                     # then /models  → openrouter/stealth/space-bunny-alpha
+```
+
+**Via the hosted endpoint** (no OpenRouter account, stable model name) — add a custom provider in your opencode config:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "spacebunny": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Space Bunny",
+      "options": { "baseURL": "https://spacebunnymodel.com/api/v1", "apiKey": "{env:SPACE_BUNNY_API_KEY}" },
+      "models": { "space-bunny-alpha": { "name": "Space Bunny Alpha" } }
+    }
+  },
+  "model": "spacebunny/space-bunny-alpha"
+}
+```
+
+Full guide: <https://spacebunnymodel.com/integrations/opencode>
+
+## Is Space Bunny free?
+
+Yes — **Space Bunny Alpha is free** during the OpenRouter preview. The easiest free route:
+
+- **Free browser playground, no signup:** <https://spacebunnymodel.com>
+- **Free API tier:** grab an `sb_live_` key at <https://spacebunnymodel.com/get-jev> (free credit to start, paid plans for higher limits).
+- **Free on OpenRouter:** `stealth/space-bunny-alpha` is $0 during the preview.
+
+Because it's a preview model, this can change — expect a price when it graduates.
 
 ## Code examples
 
